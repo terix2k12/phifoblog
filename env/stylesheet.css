@@ -37,10 +37,13 @@ div
 	display: 			none;
 }
 
-a
-{
+a {
 	text-decoration:	none;
 	color:				#555555;
+}
+
+.logon {
+	color:				#fff;
 }
 
 /*
