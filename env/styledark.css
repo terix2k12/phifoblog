@@ -1,0 +1,138 @@
+/*
+	Basic CSS Stylesheet
+
+	author: Philipp Fonteyn
+*/
+@charset "ISO-8859-1";
+
+body {
+	background-color: 	#fffff;
+
+	margin: 0px;
+	padding:			0px;	
+
+	font-family:		Verdana;	
+	font-size:			10pt;
+}
+
+p {
+	margin:				0px;
+	padding:			0px;
+}
+
+div {
+	margin:				0px;
+	padding:			0px;
+}
+
+a
+{
+	text-decoration:	none;
+}
+
+/* 	Elements for the menu region */
+
+.menucontainer 	
+{
+	position:			fixed;
+	right:				5%;
+	top:				10%;
+
+	width:				25%;
+	height:				80%;
+
+	background-color:	#2222fd;
+
+	color:				#ff0000;
+}
+
+/*
+	Elements for the content region
+*/
+
+#contentcontainer
+{
+	position:			fixed;
+	left:				5%;
+	top:				10%;
+	
+	color: #f0f0f0;
+
+	width:				65%;
+	height:				80%;
+
+	background-color:	#3f3f3f;
+}
+
+.pageinator  {
+
+	position: fixed;
+	height: 100%;
+
+	background-color: #0000ff;
+}
+
+.pageinator .previouspage {
+	position: fixed;
+	overflow: visible;
+	height: 100%;
+	width: 5%;
+	background-color: #ff00f0;
+	left: 0px;
+}
+
+.pageinator .nextpage {
+	position: fixed;
+	height: 100%;
+	width: 5%;
+	background-color: #ff00f0;
+	right: 0px;
+}
+
+/* 	Elements for the header region */
+
+#header 	
+{
+	position:			fixed;
+	left:				0;
+	top:				0;
+	
+	width:				100%;
+	height:				10%;
+
+	background-color:	#000000;
+
+	color:				#dfdfdf;
+	font-weight:		italic;
+	font-size:			12pt;
+}
+
+/* 	Elements for the footer region */	
+	
+#footer 	
+{
+	position:			fixed;
+	left:				0;
+	bottom:				0;
+	
+	width:				100%;
+	height:				10%;
+
+	background-color:	#000000;
+}
+
+#copy
+{
+	color:				#ffffff;
+	font-weight:		bold;
+}
+
+#imprint
+{
+	color:				#ffffff;
+	font-weight:		bold;
+
+	border-width:		0px 2px 0px 0px;
+	border-style:		solid;
+	border-color:		#f0f0f0;
+}

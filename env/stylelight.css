@@ -1,0 +1,164 @@
+/*
+	Basic CSS Stylesheet
+
+	author: Philipp Fonteyn
+*/
+@charset "ISO-8859-1";
+
+body {
+	background-color: 	#e0e0e0;
+
+	font-family:		Verdana;	
+	font-size:			10pt;
+
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration:	none;
+}
+
+/* 	Elements for the header region */
+
+#header 	
+{
+	position:			fixed;
+	left:				0px;
+	top:				0px;
+	
+	width:				100%;
+	height:				50px;
+
+	background-color:	#f0f0f0;
+
+	color:				#000000;
+	font-weight:		bold;
+	font-size:			16pt;
+
+	padding-top:		10px;
+
+	text-align: center;
+}
+
+/*
+	Elements for the menu region
+*/
+
+.menucontainer 	
+{
+	position:			fixed;
+	left:				25%;
+	top:				50;
+
+	width:				50%;
+	height:				100px;
+
+	background-color:	#f0f0f0;
+	color:				#6666ec;
+}
+
+.menucontainer p {
+	display: none;
+}
+
+.menucontainer ul {
+}
+
+.menucontainer ul a
+{ 
+	width:	60px;
+	height: 20px;
+	display : block;
+
+	overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.menucontainer ul a:hover
+{
+	height: 50px;
+	font-size: 15pt;
+	overflow: visible;
+	padding-top: 25px;
+}
+
+.menucontainer li {
+	width: 12%;
+    float: left;
+    list-style-type: none;
+}
+
+.pageinator {
+	position: absolute;
+	bottom: 10px;
+	text-align: center;
+	width: 100%;
+}
+
+.pageinator .previouspage {
+	position: absolute;
+	left: 	10px;
+}
+
+.pageinator .nextpage {
+	position: absolute;
+	right: 10px;
+}
+
+
+/*
+	Elements for the content region
+*/
+
+#contentcontainer
+{
+	position:			fixed;
+	top:				165;
+	left:				10%;
+	
+	width:				80%;
+
+	padding:			15px;
+
+	background-color:	#ffffff;
+}
+
+
+
+/*
+	Elements for the footer region
+*/	
+	
+#footer 	
+{
+	position:			fixed;
+	left:				0;
+	bottom:				0;
+	
+	width:				100%;
+	height:				50px;
+
+	background-color:	#f0f0f0;
+}
+
+#copy
+{
+	position: absolute;
+	right:    5px;
+	top:   0px;
+
+	color:				#000000;
+	font-weight:		bold;
+}
+
+#imprint
+{
+	position: absolute;
+	right:    5px;
+	bottom: 		0px;
+
+	color:				#000000;
+	font-weight:		bold;
+}
