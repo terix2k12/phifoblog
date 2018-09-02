@@ -35,8 +35,8 @@
 			if(!empty($name) && !empty($content)){
 
 				$sqlPut = "INSERT INTO ARTICLES (id, name, content) VALUE (0,'".$name."','".$content."');";
-				$response = mysqli_query($conn, $sqlPut);
-			
+				// $response = mysqli_query($conn, $sqlPut);
+				// ignore sql statement for now :)
 
 				if ($response === TRUE) {
 					 echo "Data processed.\n";
