@@ -24,6 +24,44 @@
 
 <div id="contentcontainer">
 
+<?php
+	$password = htmlspecialchars($_POST['pass']);
+	$name = htmlspecialchars($_POST['name']);
+	$content = htmlspecialchars($_POST['content']);
+
+	if(!empty($password)){
+		if($password == $submissionpwd){
+
+			if(!empty($name) && !empty($content)){
+
+				$sqlPut = "INSERT INTO ARTICLES (id, name, content) VALUE (0,'".$name."','".$content."');";
+				$response = mysqli_query($conn, $sqlPut);
+			}
+
+			if ($response === TRUE) {
+			    echo "Data processed.\n";
+			    // header("HTTP/1.0 200 OK");
+			} else {
+
+				echo "Data failure.";
+			    // echo "<h1>500 Internal Server Error</h1>\n";
+			    //echo mysqli_error($conn);
+			    // header("HTTP/1.0 500 Internal Server Error");  
+			}
+
+		}else{
+			echo "Wrong password!";
+		}
+	}
+?>
+
+
+<form action="https://www.philippfonteyn.de/content/article.php" method="post">
+	<p>Passphrase: <input type="text" name="pass" /></p>
+	<p>Article: <input type="text" name="name" /></p>
+ 	<textarea name="content" rows="20" cols="50"></textarea>
+ 	<p><input type="submit" /></p>
+</form>
 
 </div>
 
