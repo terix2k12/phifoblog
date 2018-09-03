@@ -131,6 +131,12 @@
                "href"  => "text/00042newarticles.html" ],
         44 => [ "title" => "GIT ignores you.",
                "date"  => "2018-09-02",
-               "href"  => "text/00044gitignore.html" ]                            
+               "href"  => "text/00044gitignore.html" ]   ,
+            45 => [ "title" => "SQL Selfdefense.",
+               "date"  => "2018-09-03",
+               "href"  => "text/00045hacking.html" ] ,
+        46 => [ "title" => "Fishing for H.",
+               "date"  => "2018-09-03",
+               "href"  => "text/00046getfile.html" ]                          
     	];
 ?>
