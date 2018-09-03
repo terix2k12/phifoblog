@@ -6,28 +6,12 @@
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 ?>
 
-<div class="menucontainer">
-	<ul>
-	<?php
-		$sqlGet = 'SELECT * FROM ARTICLES;';
-		$response = mysqli_query($conn, $sqlGet);
-		    if (mysqli_num_rows($response) > 0) {	
-		    	while($row = mysqli_fetch_assoc($response)) {
-	 				echo "<li>".$row["name"].$row["date"];
-		    	}	 
-		     }  else{
-           		echo "Keine Einträge.";
-           }
-	?>
-	</ul>
-</div>
-
 <div id="contentcontainer">
 
 <?php
 	$password = htmlspecialchars($_POST['pass']);
-	$name = htmlspecialchars($_POST['name']);
-	$content = htmlspecialchars($_POST['content']);
+	$name = mysqli_real_escape_string($conn, htmlspecialchars($_POST['name']));
+	$content = mysqli_real_escape_string($conn, htmlspecialchars($_POST['content']));
 
 	if(!empty($password)){
 		if($password == $submissionpwd){
@@ -58,6 +42,24 @@
  	<p><input type="submit" /></p>
 </form>
 
+</div>
+
+<div class="menucontainer">
+	<ul>
+	<?php
+		$sqlGet = 'SELECT * FROM ARTICLES;';
+		$response = mysqli_query($conn, $sqlGet);
+		    if (mysqli_num_rows($response) > 0) {	
+		    	while($row = mysqli_fetch_assoc($response)) {
+		    		$rowname = htmlspecialchars($row["name"]);
+		    		$rowdate = htmlspecialchars($row["date"]);
+	 				echo "<li>".$rowname.$rowdate;
+		    	}	 
+		     }  else{
+           		echo "Keine Einträge.";
+           }
+	?>
+	</ul>
 </div>
 
 <?php
