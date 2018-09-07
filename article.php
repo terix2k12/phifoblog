@@ -18,29 +18,48 @@
 	$name = $_POST['name'];
 	$content = $_POST['content'];
 
-	if(!empty($password) && $password == $submissionpwd){
+	if(!empty($password)){
 
-			if(!empty($name) && !empty($content)){
+	    // First make a brute force check:
+		$sqlGet = 'SELECT COUNT(*) FROM LOGINREGISTER;';
+		$response = mysqli_query($mysqli, $sqlGet);
+		$anzahl = mysqli_fetch_row($response)[0];
+		echo "anzahl".$anzahl;
 
-				if (!($stmt = $mysqli->prepare("INSERT INTO ARTICLES (id, name, content) VALUE (0,?,?)"))) {
-				    // echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
-				}
+		if($anzahl < 6) {
 
-				if (!$stmt->bind_param("ss", $name, $content)) {
-				    // echo "Binding parameters 1 failed: (" . $stmt->errno . ") " . $stmt->error;
-				}
-				
-				if (!$stmt->execute()) {
-				    // echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-				     echo "Data failure.\n";
-				}else{
-					 echo "Data processed.\n";
-				}
+ 	 		 if($password == $submissionpwd){
 
-			}
+			 	if(!empty($name) && !empty($content)){
+	
+						if (!($stmt = $mysqli->prepare("INSERT INTO ARTICLES (id, name, content) VALUE (0,?,?)"))) {
+						    // echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+						}
+	
+						if (!$stmt->bind_param("ss", $name, $content)) {
+						    // echo "Binding parameters 1 failed: (" . $stmt->errno . ") " . $stmt->error;
+						}
+						
+						if (!$stmt->execute()) {
+						    // echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+						     echo "Data failure.\n";
+						}else{
+							 echo "Data processed.\n";
+						}
+	
+			    }
+
+		}else{
+			echo "Wrong password!";
+
+			$sqlGet = 'INSERT INTO LOGINREGISTER (ATTEMPT) VALUES (1);';
+			mysqli_query($mysqli, $sqlGet);
+		}
 
 	}else{
-		echo "Wrong password!";
+		echo "Maxi reached.";
+	}
+
 	}
 
 ?>
