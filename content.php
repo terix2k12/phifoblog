@@ -137,6 +137,15 @@
                "href"  => "text/00045hacking.html" ] ,
         46 => [ "title" => "Fishing for H.",
                "date"  => "2018-09-03",
-               "href"  => "text/00046getfile.html" ]                          
+               "href"  => "text/00046getfile.html" ]     ,
+        47 => [ "title" => "Prepare your statements",
+               "date"  => "2018-09-07",
+               "href"  => "text/00047sqlprep.html" ]   ,
+        48 => [ "title" => "speak PHP",
+               "date"  => "2018-09-",
+               "href"  => "text/00048speakphp.html" ] ,
+        49 => [ "title" => "Brute Force is not enough",
+               "date"  => "2018-09-",
+               "href"  => "text/00049force.html" ]                    
     	];
 ?>
