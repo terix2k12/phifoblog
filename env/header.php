@@ -1,10 +1,6 @@
-<!-- 	
-	Author:  Philipp Fonteyn
--->
 <?php
 	$stylepath = "env/stylesheet.css";
 
-	$css = $_GET["css"];
 	if($css == "dark"){
 		$stylepath = "env/styledark.css";
 	}
@@ -30,10 +26,10 @@
 				echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"".$stylepath."\">\n";		
 			}		
 		?>		
-		<title><?php echo $pagetitle; ?></title>
+		<title>Phi Fo Blog <?php echo $pagetitle; ?></title>
 	</head>
 	<body>
 
 	<div id="header">
-		A developers Blog. Under construction. Forever.	
+		Phi Fo Blog. Processing the queue.	
 	</div>
