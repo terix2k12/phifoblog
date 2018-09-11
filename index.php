@@ -1,8 +1,8 @@
 <?php
-	$contentId = $_GET["id"];
-	$css = $_GET["css"];
+	$contentId = intval($_GET["id"]);
+	$css = htmlspecialchars($_GET["css"]);
 	$page = intval($_GET["page"]);
-	$edit = $_GET["edit"];
+	$edit = intval($_GET["edit"]);
 
 	function GetLink($targetId, $targetPage, $targetCss) {
     	global $contentId;
