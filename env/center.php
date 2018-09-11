@@ -1,17 +1,19 @@
 <?php
-    if(!empty($contentId))
-    {
+    if($edit != 1 && $edit != 2){
         echo "<div id=\"contentcontainer\">\n";
-        if(array_key_exists($contentId,$content)) {
-            include($content[$contentId]["href"]);
+        if(!empty($contentId))
+        {
+            if(array_key_exists($contentId,$content)) {
+                include($content[$contentId]["href"]);
+            } else {
+                echo "<p>Your search is futile.</p>\n";
+            }
+
+            echo "\n<br><a href=\"".GetLink(0, 0, "")."\">Home</a>\n";
         } else {
-            echo "Your search is futile.";
+            echo "The beginning.";
         }
-        echo "\n<a href=".GetLink(0, 0, "").">Startseite</a>\n";
-        echo "</div>\n";
-    } else {
-        echo "<div id=\"contentcontainer\">\n";
-        echo "The beginning.";
+
         echo "</div>\n";
     }
 ?>

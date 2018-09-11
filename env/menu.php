@@ -1,7 +1,7 @@
 <?php
     if($css!="off" || empty($contentId)){
-        echo "<div class=\"menucontainer\">\n";
-        echo "<ul>\n";
+        echo "\n<div class=\"menucontainer\">\n";
+        echo "<ul>";
                 
                 $pagesize = 7;
                 $maxpage = intval(count($content) / $pagesize);
@@ -25,7 +25,7 @@
                     echo "\n\t\t<li><a href=".GetLink($i,"","").">".$content[$i]["title"]."</a>";
                     echo " <p>".$content[$i]["date"]."</p></li>";
                 }
-                echo "</ul><div class=\"pageinator\">\n";
+                echo "\n</ul>\n\t<div class=\"pageinator\">\n";
 
                 if($page>0){
                     echo "<a class=\"previouspage\" href=".GetLink($contentId,$page-1,"").">&lt; Previous </a>\n";  
