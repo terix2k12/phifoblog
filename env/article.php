@@ -87,7 +87,7 @@
 	}
 ?>
  			</textarea>
- 			<p><input type="submit" />Passphrase: <input type="text" name="pass" /></p>
+ 			<p><input type="submit" />Passphrase: <input type="password" name="pass" /></p>
 		</form>
 	</div>
 <?php  /*
