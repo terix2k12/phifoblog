@@ -146,6 +146,12 @@
                "href"  => "text/00048speakphp.html" ] ,
         49 => [ "title" => "Brute Force is not enough",
                "date"  => "2018-09-",
-               "href"  => "text/00049force.html" ]                    
+               "href"  => "text/00049force.html" ] ,
+        50 => [ "title" => "Styling Sublime PHP",
+               "date"  => "2018-09-",
+               "href"  => "text/00050subphp.html" ],
+         51 => [ "title" => "A succesful hack!",
+               "date"  => "2018-09-",
+               "href"  => "text/00051hacking3.html" ]                   
     	];
 ?>
