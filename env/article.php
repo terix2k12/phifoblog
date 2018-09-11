@@ -58,8 +58,8 @@
 	}
 ?>
 		<form action="https://www.philippfonteyn.de/content/index.php?edit=2" method="post">
-			<p>Id: <input type="text" name="newId"><?php echo htmlspecialchars($contentId); ?></input></p>
-			<p>Article: <input type="text" name="name">
+			<p>Id: <input type="text" name="newId" value="<?php echo htmlspecialchars($contentId); ?>" /></p>
+			<p>Article: <input type="text" name="name" value="
 <?php
 	if(empty($contentId) || $contentId==0){
 		echo "New article";
@@ -67,8 +67,8 @@
 		echo htmlspecialchars($content[$contentId]["title"]);
 	}
 ?>				
-			</input></p>
-			<p>Date: <input type="text" name="date">
+			" /></p>
+			<p>Date: <input type="text" name="date" value="
 <?php
 	if(empty($contentId) || $contentId==0){
 		echo "-today-";
@@ -76,7 +76,7 @@
 		echo htmlspecialchars($content[$contentId]["date"]);
 	}
 ?>
-			</input</p>
+			" /></p>
 			<!--<p>Category: <input type="text" name="category" /></p>-->
  			<textarea name="content" rows="20" cols="100">
 <?php
