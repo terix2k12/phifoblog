@@ -181,4 +181,30 @@
                "date"  => "2018-09-23",
                "href"  => "text/00060phpjson.html" ] 
 ];
+
+return;
+
+        // Migration code:
+        $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+        $stmt = $mysqli->prepare("INSERT INTO ARTICLES (id, name, date, content) VALUE (?,?,?,?)");
+        $tid = 0;
+        $tdate = "";
+        $tname = "";
+        $tcontent = "";
+
+        $stmt->bind_param("isss", $tid, $tdate, $tname, $tcontent);
+                        
+        $tmax = intval(count($content));
+
+        for ($i = 1; $i <= $tmax; $i++) {
+           $tid = $id;
+           $tdate = $content[$i]["date"]; 
+            $tcontent = file_get_contents($content[$i]["href"]);
+            $tname = $content[$i]["title"];
+           // $stmt->execute();
+
+            echo "dp:".$tname." >>".$tcontent."\n";
+        }                        
+
+        mysqli_close($mysqli);
 ?>
