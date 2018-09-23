@@ -4,7 +4,7 @@
         if(!empty($contentId))
         {
             if(array_key_exists($contentId,$content)) {
-                include($content[$contentId]["href"]);
+                echo $content[$contentId]["content"] ;
             } else {
                 echo "<p>Your search is futile.</p>\n";
             }

@@ -1,5 +1,5 @@
 <?php
-    $content = [
+      $content = [
     	1 => [ "title" => "A new awakening.",
     		   "date"  => "2018-02-07",
     		   "href"  => "text/00000awakening.html" ],
@@ -180,30 +180,48 @@
          60 => [ "title" => "Articles to database (cntd)",
                "date"  => "2018-09-23",
                "href"  => "text/00060phpjson.html" ] 
-];
+]; /*
 
-return;
+
+    $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+ 
+    $stmt = $mysqli->prepare("SELECT id, name, date, content FROM ARTICLES;");                        
+    $stmt->execute();
+    $stmt->bind_result($did, $dname, $ddate, $dcontent);
+
+    $content = [];
+     while($row = $stmt->fetch()) {
+        $content[intval($did)-2] = 
+        [ "title" => $dname,
+               "date"  => $ddate,
+               "content"  => $dcontent ];
+     }
+    
+    mysqli_close($mysqli);
+
+
+  return;*/
 
         // Migration code:
         $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
-        $stmt = $mysqli->prepare("INSERT INTO ARTICLES (id, name, date, content) VALUE (?,?,?,?)");
-        $tid = 0;
+        $stmt = $mysqli->prepare("INSERT INTO ARTICLES (name, date, content) VALUE (?,?,?)");
+
         $tdate = "";
         $tname = "";
         $tcontent = "";
 
-        $stmt->bind_param("isss", $tid, $tdate, $tname, $tcontent);
+        $stmt->bind_param("sss", $tname, $tdate, $tcontent);
                         
         $tmax = intval(count($content));
 
         for ($i = 1; $i <= $tmax; $i++) {
-           $tid = $id;
+        
            $tdate = $content[$i]["date"]; 
             $tcontent = file_get_contents($content[$i]["href"]);
             $tname = $content[$i]["title"];
-           // $stmt->execute();
+             $stmt->execute();
 
-            echo "dp:".$tname." >>".$tcontent."\n";
+            // echo "dp:".$tname." >>".$tcontent."\n";
         }                        
 
         mysqli_close($mysqli);
