@@ -114,7 +114,7 @@
 	if(empty($contentId) || $contentId==0){
 		echo "Here goes the <i>new</i> text";
 	}else{
-		include($content[$contentId]["href"]);
+		echo $content[$contentId]["content"];
 	}
 ?>
  			</textarea>
