@@ -1,5 +1,5 @@
 <?php
-    if($edit != 1 && $edit != 2){
+    if($edit != 1 && $edit != 2 && $edit != 3){
         echo "<div id=\"contentcontainer\">\n";
         if(!empty($contentId))
         {

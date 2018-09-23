@@ -1,4 +1,8 @@
 <?php
+    if($edit==3) {
+        return;
+    }
+
     if($css!="off" || empty($contentId)){
         echo "\n<div class=\"menucontainer\">\n";
         echo "<ul>";
@@ -39,5 +43,5 @@
 
         echo "</div>";    
     }
-    echo "</div>";  
+    echo "</div> <!-- outer -->";  
 ?>

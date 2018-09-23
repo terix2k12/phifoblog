@@ -12,6 +12,10 @@
 	if($css == "off"){
 		$stylepath = "";
 	}
+
+	if($edit==3) {
+        return;
+    }
 ?>
 <html>
 	<head>
