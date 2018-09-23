@@ -1,5 +1,5 @@
 <?php
-      $content = [
+    /*  $content = [
     	1 => [ "title" => "A new awakening.",
     		   "date"  => "2018-02-07",
     		   "href"  => "text/00000awakening.html" ],
@@ -180,7 +180,7 @@
          60 => [ "title" => "Articles to database (cntd)",
                "date"  => "2018-09-23",
                "href"  => "text/00060phpjson.html" ] 
-]; /*
+]; */
 
 
     $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
@@ -191,7 +191,7 @@
 
     $content = [];
      while($row = $stmt->fetch()) {
-        $content[intval($did)-2] = 
+        $content[intval($did)] = 
         [ "title" => $dname,
                "date"  => $ddate,
                "content"  => $dcontent ];
@@ -199,8 +199,8 @@
     
     mysqli_close($mysqli);
 
-
-  return;*/
+/*
+  return;
 
         // Migration code:
         $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
@@ -224,5 +224,5 @@
             // echo "dp:".$tname." >>".$tcontent."\n";
         }                        
 
-        mysqli_close($mysqli);
+        mysqli_close($mysqli);*/
 ?>
