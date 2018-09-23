@@ -3,6 +3,35 @@
 		return;
 	}
 
+	/*
+    // TODO import json file
+  if($edit = 4)
+
+        // Migration code:
+        $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+        $stmt = $mysqli->prepare("INSERT INTO ARTICLES (name, date, content) VALUE (?,?,?)");
+
+        $tdate = "";
+        $tname = "";
+        $tcontent = "";
+
+        $stmt->bind_param("sss", $tname, $tdate, $tcontent);
+                        
+        $tmax = intval(count($content));
+
+        for ($i = 1; $i <= $tmax; $i++) {
+        
+           $tdate = $content[$i]["date"]; 
+            $tcontent = file_get_contents($content[$i]["href"]);
+            $tname = $content[$i]["title"];
+             $stmt->execute();
+
+            // echo "dp:".$tname." >>".$tcontent."\n";
+        }                        
+
+        mysqli_close($mysqli);
+ */
+
 	// Download articles
 	if($edit==3) {
 		$mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
