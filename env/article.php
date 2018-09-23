@@ -50,18 +50,23 @@
 			if($anzahl < 6) {
  	 			if($password == $submissionpwd){
 
-					$name = $_POST['name'];
-					$content = $_POST['content'];
-			 	
-			 		if(!empty($name) && !empty($content)){
-	
-						if (!($stmt = $mysqli->prepare("INSERT INTO ARTICLES (id, name, content) VALUE (0,?,?)"))) {
-						    // echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
-						}
-	
-						if (!$stmt->bind_param("ss", $name, $content)) {
-						    // echo "Binding parameters 1 failed: (" . $stmt->errno . ") " . $stmt->error;
-						}
+ 	 				$nid = intval($_POST['newId']);
+ 	 				$ndate = $_POST['ndate'];	
+					$nname = $_POST['name'];
+					$ncontent = $_POST['content'];
+			
+			 			if($nid==0){
+							if (!($stmt = $mysqli->prepare("INSERT INTO ARTICLES (date, name, content) VALUE (?,?,?)"))) {
+						    	//  echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+							}
+							$stmt->bind_param("sss", $ndate, $nname, $ncontent);
+							
+			 			} else {
+			 				if (!($stmt = $mysqli->prepare("UPDATE ARTICLES set date = ?, name = ?, content = ? where id = ?"))) {
+						    	//  echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
+							}	
+			 				$stmt->bind_param("sssi", $ndate, $nname, $ncontent, $nid);
+			 			}					
 						
 						if (!$stmt->execute()) {
 						    // echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
@@ -69,7 +74,6 @@
 						}else{
 							 echo "Data processed.\n";
 						}
-			    	}
 				}else{
 					echo "Wrong password!";
 
@@ -95,7 +99,7 @@
 	}
 ?>				
 			" /></p>
-			<p>Date: <input type="text" name="date" value="
+			<p>Date: <input type="text" name="ndate" value="
 <?php
 	if(empty($contentId) || $contentId==0){
 		echo "-today-";
@@ -117,23 +121,7 @@
  			<p><input type="submit" />Passphrase: <input type="password" name="pass" /></p>
 		</form>
 	</div>
-<?php  /*
-<div class="menucontainer">
-	<ul>
-	<?php
-		$sqlGet = 'SELECT * FROM ARTICLES;';
-		$response = mysqli_query($mysqli, $sqlGet);
-		    if (mysqli_num_rows($response) > 0) {	
-		    	while($row = mysqli_fetch_assoc($response)) {
-		    		$rowname = htmlspecialchars($row["name"]);
-		    		$rowdate = htmlspecialchars($row["date"]);
-	 				echo "<li>".$rowname.$rowdate;
-		    	}	 
-		     }  else{
-           		echo "Keine Einträge.";
-           }
-	?>
-	</ul>
-</div>*/
+
+<?php 
 	mysqli_close($mysqli);
 ?>
