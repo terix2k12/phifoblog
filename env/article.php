@@ -59,7 +59,8 @@
 		return;
 	}
 
-	echo "\n\t<div id=\"contentcontainer\">\n";
+	echo "\n\t<div class=\"contentcontainer\">\n";
+	echo "\n\t<div class=\"content\">\n";
 
 	if($edit==2) {
 		echo "Processing...<br>";
@@ -113,7 +114,7 @@
 				echo "Maxi reached.";
 			}		
 		}
-		echo "\n\t</div>\n";
+		echo "\n\t</div></div>\n";
 		return;
 	}
 ?>
@@ -149,7 +150,7 @@
  			</textarea>
  			<p><input type="submit" />Passphrase: <input type="password" name="pass" /></p>
 		</form>
-	</div>
+	</div></div>
 
 <?php 
 	mysqli_close($mysqli);

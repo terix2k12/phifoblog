@@ -1,6 +1,8 @@
 <?php
     if($edit != 1 && $edit != 2 && $edit != 3){
-        echo "<div id=\"contentcontainer\">\n";
+        echo "\t<div class=\"contentcontainer\">\n";
+        echo "\t\t<div class=\"content\">\n";
+        echo "\t\t<p class=\"pagetitle\">".htmlspecialchars($content[$contentId]["title"])."</p>\n";
         if(!empty($contentId))
         {
             if(array_key_exists($contentId,$content)) {
@@ -14,6 +16,7 @@
             echo "The beginning.";
         }
 
+        echo "\t</div>\n";
         echo "</div>\n";
     }
 ?>

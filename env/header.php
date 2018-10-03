@@ -31,6 +31,6 @@
 	</head>
 	<body>
 
-	<div id="header">
-		First In, First Out. Processing a queue the PhiFo way.	
+	<div class="header">
+		<p>Phi-Fo developer blog</p>	
 	</div>

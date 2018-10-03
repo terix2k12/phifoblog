@@ -5,9 +5,11 @@
 
     if($css!="off" || empty($contentId)) {
         echo "\n\t<div class=\"menucontainer\">\n";
-        echo "\t\t<ul>";
+        echo "<p>Latest Articles:</p>\n";
+        echo "\t<div class=\"menu\">\n";
+        echo "\t\t\t<ul>";
                 
-        $pagesize = 7;
+        $pagesize = 5;
         $maxpage = intval(count($content) / $pagesize);
 
         if(empty($page) || $page<0){
@@ -26,12 +28,13 @@
         }
 
         for ($i = $from; $i <= $until; $i++) {
-            echo "\n\t\t\t<li><a href=\"".GetLink($i,"","")."\">".$content[$i]["title"]."</a>";
-            echo " <p>".$content[$i]["date"]."</p></li>";
+            echo "\n\t\t\t<li><div><a href=\"".GetLink($i,"","")."\">".$content[$i]["title"]."</a>";
+            echo " <span>".$content[$i]["date"]."</span></div></li>";
         }
+        echo "\t\t</ul>\n\t</div>\n";
 
         // Paginator:
-        echo "\n\t\t</ul>\n\n\t\t<div class=\"pageinator\">\n";
+        echo "\n\n\t\t<div class=\"pageinator\">\n";
         if($page>0){
             echo "\t\t\t<a class=\"previouspage\" href=\"".GetLink($contentId,$page-1,"")."\">&lt; Previous </a>\n";  
         }
