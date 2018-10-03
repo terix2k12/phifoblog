@@ -24,6 +24,10 @@
     	
     	return "index.php?id=".$targetId.$cssLnk."&page=".$targetPage;
 	}
+
+	if($edit != 1 && $edit != 2 && $edit != 3){
+		$contentcontainer = 1;
+	}
 	
 	include("dbcredentials.php");
 	include("env/header.php");
