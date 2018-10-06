@@ -8,7 +8,7 @@
     
     if(!empty($contentId))
     {
-        echo "\t\t<p class=\"pagetitle\">".htmlspecialchars($content[$contentId]["title"])."</p>\n";
+        echo "\t\t<h2 class=\"pagetitle\">".htmlspecialchars($content[$contentId]["title"])."</h2>\n";
 
         if(array_key_exists($contentId,$content)) {
             echo $content[$contentId]["content"] ;
@@ -19,26 +19,43 @@
     } else {
         echo "\t\t<p class=\"pagetitle\">First-In-First-Out</p>\n";
 
-        echo "<h3>A blog mainly about programming and development.</h3>
+        echo "<div class=\"home\">
+    <h3>A blog (mostly) about programming and development.</h3>
+    <ul>
+    <li>
+        <p>A wild trip:</p>
+        <p>An adventure self-documenting its own story. Follow the creation of this blog on the fly. If you like it, feel free to clone the source code from <a>github</a>.</p>
+    </li>
+ 
+    <li>
+        <p >Classical programming:</p>
+        <p >Solving everyday problems with COBOL, C#, Python or brainfuck.</p>
+    </li>
 
-<div>A wild trip<br> This blog is a self-documenting adventure. Follow its creation and if you like this blog, feel free to clone the source code from <a>github</a>  </div>
+ <li>
+    <p >Apps and gimmicks:</p>
+<p >Android, Flutter, Kotlin and everything on your mobile device.</p>
+</li>
 
-        <div>Classical programming<br>
-         COBOL, C#, Python, </div>
+ <li>
+    <p >Computers in everyday life:</p>
+<p >Ubuntu, IT-Security, Latex and more. </p>
+</li>
 
-        <div>Apps and gimmicks<br> 
-         Android, Flutter, Kotlin and everything on your mobile device.
-         </div>
+ <li>
+    <p >Webtech:</p>
+<p >PHP, Angular, JavaScript, CSS and other tools you should or shoudnt know</p>
+</li>
 
-         <div>Computers in everyday life<br>
-         Ubuntu, IT-Security, Latex and more. 
-         </div>
+ <li>
+    <p >Offline:</p>
+<p >cycling, hiking, travel</p>
+</li>
 
-         <div>Webtechnologies
-            PHP, Angular, JavaScript, CSS and other tools you should or shoudnt know
-         </div>";
+</ul>
+ </div>";
     }
 
-    echo "\t\t</div>\n";
-    echo "\t</div>\n";
+    echo "\t\t\t</div>\n";
+    echo "\t\t</div>\n\n";
 ?>

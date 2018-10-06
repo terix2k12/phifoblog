@@ -4,9 +4,11 @@
     }
 
     if($css!="off" || empty($contentId)) {
-        echo "\n\t<div class=\"menucontainer\">\n";
-        echo "<p>Latest Articles:</p>\n";
-        echo "\t<div class=\"menu\">\n";
+        echo "\n\n\t<div class=\"sidepane\">\n";
+
+        echo "\n\n\t<div class=\"menucontainer\">\n";
+        echo "\t\t<p>Latest Articles:</p>\n";
+        echo "\t\t<div class=\"menu\">\n";
         echo "\t\t\t<ul>";
                 
         $pagesize = 5;
@@ -31,7 +33,7 @@
             echo "\n\t\t\t<li><div><a href=\"".GetLink($i,"","")."\">".$content[$i]["title"]."</a>";
             echo " <span>".$content[$i]["date"]."</span></div></li>";
         }
-        echo "\t\t</ul>\n\t</div>\n";
+        echo "\n\t\t</ul>\n\t\t</div>\n";
 
         // Paginator:
         echo "\n\n\t\t<div class=\"pageinator\">\n";
@@ -48,5 +50,5 @@
         echo "\t\t</div>\n";
         // End paginator    
     }
-    echo "\t</div>\n";  
+    echo "\t</div>\n</div>\n\n";  
 ?>
