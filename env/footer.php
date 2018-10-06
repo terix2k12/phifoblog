@@ -1,5 +1,5 @@
 <?php 
-	if($edit==3) {
+	if($nonHtml) {
         return;
     }
 ?>

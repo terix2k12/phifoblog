@@ -36,7 +36,7 @@
 	if($edit==3) {
 		$mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
 	
-		if($contentId==0){
+		if($contentId==-1){
 			$stmt = $mysqli->prepare("SELECT * FROM ARTICLES;");
 		}else{
 			$stmt = $mysqli->prepare("SELECT * FROM ARTICLES WHERE ID = ?;");
@@ -85,7 +85,7 @@
 					$nname = $_POST['name'];
 					$ncontent = $_POST['content'];
 			
-			 			if($nid==0){
+			 			if($nid==-1){
 							if (!($stmt = $mysqli->prepare("INSERT INTO ARTICLES (date, name, content) VALUE (?,?,?)"))) {
 						    	//  echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
 							}
@@ -119,10 +119,16 @@
 	}
 ?>
 		<form action="https://www.philippfonteyn.de/content/index.php?edit=2" method="post">
-			<p>Id: <input type="text" name="newId" value="<?php echo htmlspecialchars($contentId); ?>" /></p>
+			<p>Id: <input type="text" name="newId" value="<?php 
+			if(!array_key_exists($contentId,$content)){
+				echo "-1";
+			}else{
+				echo htmlspecialchars($contentId); 
+			}
+			?>" /></p>
 			<p>Article: <input type="text" name="name" value="
 <?php
-	if(empty($contentId) || $contentId==0){
+	if(!array_key_exists($contentId,$content)){
 		echo "New article";
 	}else{
 		echo htmlspecialchars($content[$contentId]["title"]);
@@ -131,7 +137,7 @@
 			" /></p>
 			<p>Date: <input type="text" name="ndate" value="
 <?php
-	if(empty($contentId) || $contentId==0){
+	if(!array_key_exists($contentId,$content)){
 		echo "-today-";
 	}else{
 		echo htmlspecialchars($content[$contentId]["date"]);
@@ -141,17 +147,16 @@
 			<!--<p>Category: <input type="text" name="category" /></p>-->
  			<textarea name="content" rows="20" cols="100">
 <?php
-	if(empty($contentId) || $contentId==0){
+	if(!array_key_exists($contentId,$content)){
 		echo "Here goes the <i>new</i> text";
 	}else{
 		echo $content[$contentId]["content"];
 	}
+
+	mysqli_close($mysqli);
 ?>
  			</textarea>
  			<p><input type="submit" />Passphrase: <input type="password" name="pass" /></p>
 		</form>
-	</div></div>
-
-<?php 
-	mysqli_close($mysqli);
-?>
+	</div>
+</div>

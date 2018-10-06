@@ -1,5 +1,9 @@
 <?php
 	$contentId = intval($_GET["id"]);
+	if(empty($contentId)) {
+		$contentId = 0;
+	}
+
 	$css = htmlspecialchars($_GET["css"]);
 	$page = intval($_GET["page"]);
 	$edit = intval($_GET["edit"]);
