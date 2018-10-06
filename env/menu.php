@@ -6,7 +6,7 @@
     if($css!="off" || empty($contentId)) {
         echo "\n\n\t<div class=\"sidepane\">\n";
 
-        echo "\n\n\t<div class=\"menucontainer\">\n";
+        echo "\t<div class=\"menucontainer\">\n";
         echo "\t\t<p>Latest Articles:</p>\n";
         echo "\t\t<div class=\"menu\">\n";
         echo "\t\t\t<ul>";
@@ -36,7 +36,7 @@
         echo "\n\t\t</ul>\n\t\t</div>\n";
 
         // Paginator:
-        echo "\n\n\t\t<div class=\"pageinator\">\n";
+        echo "\n\t\t<div class=\"pageinator\">\n";
         if($page>0){
             echo "\t\t\t<a class=\"previouspage\" href=\"".GetLink($contentId,$page-1,"")."\">&lt; Previous </a>\n";  
         }
@@ -47,8 +47,20 @@
             echo "\t\t\t<a class=\"nextpage\" href=\"".GetLink($contentId,$page+1,"")."\"> Next &gt;</a>\n";  
         }
 
-        echo "\t\t</div>\n";
-        // End paginator    
+        echo "\t\t</div>\n\t</div>";
+        // End paginator  
+
+        echo "       \n <div class= 'categorycontainer'>";
+        echo "     <p>Categories:</p> ";
+        echo "      <div>php, java, c#, blog, sql</div>";
+        echo "    </div>\n";
+        echo "<div class='searchcontainer'>";
+        echo "    <p>Search:</p>";
+        echo "    <form>";
+        echo "        <input type='text' name='name' value='Find ...'>";
+        echo "    </form>";
+        echo "</div>\n";
+
     }
-    echo "\t</div>\n</div>\n\n";  
+    echo "\n\t</div>\n\n";  
 ?>
