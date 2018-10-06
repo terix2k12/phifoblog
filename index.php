@@ -28,6 +28,24 @@
 	if($edit != 1 && $edit != 2 && $edit != 3){
 		$contentcontainer = 1;
 	}
+
+	if($edit==3){
+		$nonHtml = 1;
+	}
+
+	$stylepath = "env/stylesheet.css";
+
+	if($css == "dark"){
+		$stylepath = "env/styledark.css";
+	}
+
+	if($css == "light"){
+		$stylepath = "env/stylelight.css";
+	}
+
+	if($css == "off"){
+		$stylepath = "";
+	}
 	
 	include("dbcredentials.php");
 	include("env/header.php");

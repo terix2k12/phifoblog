@@ -1,19 +1,5 @@
 <?php
-	$stylepath = "env/stylesheet.css";
-
-	if($css == "dark"){
-		$stylepath = "env/styledark.css";
-	}
-
-	if($css == "light"){
-		$stylepath = "env/stylelight.css";
-	}
-
-	if($css == "off"){
-		$stylepath = "";
-	}
-
-	if($edit==3) {
+	if($nonHtml) {
         return;
     }
 ?>
