@@ -43,8 +43,6 @@
         }    
         echo "\n\t\t</ul>\n\t\t</div>\n";
 
-        $maxpage = intval($activeArticles / $pagesize);
-
         // Paginator:
         echo "\n\t\t<div class=\"pageinator\">\n";
         if($page>0){
