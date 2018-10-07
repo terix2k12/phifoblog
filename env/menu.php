@@ -29,11 +29,21 @@
             $until = count($content);
         }
 
-        for ($i = $from; $i <= $until; $i++) {
-            echo "\n\t\t\t<li><div><a href=\"".GetLink($i,"","")."\">".$content[$i]["title"]."</a>";
-            echo " <span>".$content[$i]["date"]."</span></div></li>";
-        }
+        $activeArticles = 0;
+        foreach($content as $i => $article) {
+            // echo "i:".$i." ".$activeArticles." ".$from." ".$until."<br>";
+            if($article["active"]==1) {
+                $activeArticles++;
+            
+                if($from<=$activeArticles and $until>=$activeArticles) {    
+                    echo "\n\t\t\t<li><div><a href=\"".GetLink($i,"","")."\">".$article["title"]."</a>";    
+                    echo " <span>".$article["date"]."</span></div></li>";
+                }
+            }
+        }    
         echo "\n\t\t</ul>\n\t\t</div>\n";
+
+        $maxpage = intval($activeArticles / $pagesize);
 
         // Paginator:
         echo "\n\t\t<div class=\"pageinator\">\n";
@@ -61,6 +71,6 @@
         echo "    </form>";
         echo "</div>\n";
 
+        echo "\n\t</div>\n\n";  
     }
-    echo "\n\t</div>\n\n";  
 ?>
