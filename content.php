@@ -5,7 +5,7 @@
  
     // TODO select only specific content based on filters (date, categories, range etc.)
 
-    $stmt = $mysqli->prepare("SELECT id, name, date, content, active FROM ARTICLES;");                        
+    $stmt = $mysqli->prepare("SELECT id, name, date, content, active FROM ARTICLES order by date desc;");                        
     $stmt->execute();
     $stmt->bind_result($dId, $dName, $dDate, $dContent, $dActive);
 
