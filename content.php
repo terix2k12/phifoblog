@@ -5,15 +5,16 @@
  
     // TODO select only specific content based on filters (date, categories, range etc.)
 
-    $stmt = $mysqli->prepare("SELECT id, name, date, content FROM ARTICLES;");                        
+    $stmt = $mysqli->prepare("SELECT id, name, date, content, active FROM ARTICLES;");                        
     $stmt->execute();
-    $stmt->bind_result($dId, $dName, $dDate, $dContent);
+    $stmt->bind_result($dId, $dName, $dDate, $dContent, $dActive);
 
     while($row = $stmt->fetch()) {
         $content[intval($dId)] = [
             "title"    => $dName,
             "date"     => $dDate,
-            "content"  => $dContent
+            "content"  => $dContent,
+            "active"  => $dActive
         ];
     }
     

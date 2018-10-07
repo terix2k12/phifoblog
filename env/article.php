@@ -84,26 +84,28 @@
  	 				$ndate = $_POST['ndate'];	
 					$nname = $_POST['name'];
 					$ncontent = $_POST['content'];
-			
-			 			if($nid==-1){
-							if (!($stmt = $mysqli->prepare("INSERT INTO ARTICLES (date, name, content) VALUE (?,?,?)"))) {
-						    	//  echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
-							}
-							$stmt->bind_param("sss", $ndate, $nname, $ncontent);
-							
-			 			} else {
-			 				if (!($stmt = $mysqli->prepare("UPDATE ARTICLES set date = ?, name = ?, content = ? where id = ?"))) {
-						    	//  echo "Prepare failed: (" . $mysqli->errno . ") " . $mysqli->error;
-							}	
-			 				$stmt->bind_param("sssi", $ndate, $nname, $ncontent, $nid);
-			 			}					
-						
-						if (!$stmt->execute()) {
-						    // echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
-						     echo "Data failure.\n";
+					$nDelete = $_POST['delete'];
+					$nactive = $_POST['active']=="on"?1:0;
+
+			 		if($nid==-1){
+						$stmt = $mysqli->prepare("INSERT INTO ARTICLES (date, name, content, active) VALUE (?,?,?,?)");
+						$stmt->bind_param("sssi", $ndate, $nname, $ncontent, $nactive);		
+			 		} else {
+						if($nDelete=="on") {
+							$stmt = $mysqli->prepare("DELETE FROM ARTICLES where id = ?");
+			 				$stmt->bind_param("i", $nid);	
 						}else{
-							 echo "Data processed.\n";
+			 				$stmt = $mysqli->prepare("UPDATE ARTICLES set date = ?, name = ?, content = ?, active = ? where id = ?");
+			 				$stmt->bind_param("sssii", $ndate, $nname, $ncontent, $nactive, $nid);
 						}
+			 		}	
+
+					if (!$stmt->execute()) {
+					    // echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+					     echo "Data failure.\n";
+					}else{
+						 echo "Data processed.\n";
+					}
 				}else{
 					echo "Wrong password!";
 
@@ -156,7 +158,16 @@
 	mysqli_close($mysqli);
 ?>
  			</textarea>
- 			<p><input type="submit" />Passphrase: <input type="password" name="pass" /></p>
+ 			<p>Delete:<input type="checkbox" name="delete"/></p>
+ 			<p>Active:<input type="checkbox" name="active" <?php 
+				if(!array_key_exists($contentId,$content)){
+					echo "checked";
+				}else{
+					echo $content[$contentId]["active"]==1?"checked":"";
+				}
+ 			?>/></p>
+ 			<p>Passphrase: <input type="password" name="pass"/></p>
+ 			<p><input type="submit" value="Update article"/></p>
 		</form>
 	</div>
 </div>
