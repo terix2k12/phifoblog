@@ -17,7 +17,7 @@
     		$targetId = 0;
     	}
 
-		if(empty($targetPage)) {
+		if(!is_numeric($targetPage)) {
     		$targetPage = $page;
     	}
 
