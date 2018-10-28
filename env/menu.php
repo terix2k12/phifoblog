@@ -36,8 +36,8 @@
                 $activeArticles++;
             
                 if($from<=$activeArticles and $until>=$activeArticles) {    
-                    echo "\n\t\t\t<li><div><a href=\"".GetLink($i,"","")."\">".$article["title"]."</a>";    
-                    echo " <span>".$article["date"]."</span></div></li>";
+                    echo "\n\t\t\t<li><a href=\"".GetLink($i,"","")."\">".$article["title"]."</a>";    
+                    echo " <span>".$article["date"]."</span></li>";
                 }
             }
         }    
@@ -60,8 +60,20 @@
 
         echo "       \n <div class= 'categorycontainer'>";
         echo "     <p>Categories:</p> ";
-        echo "      <div>php, java, c#, blog, sql</div>";
+        echo "      <div>";
+        $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+        $stmt = $mysqli->prepare("SELECT name FROM CATEGORY cat;");
+        $stmt->bind_param("i", $contentId);
+        $stmt->execute();
+        $stmt->bind_result($dId); 
+        while($row = $stmt->fetch()) {
+            echo $dId." ";
+        }
+        mysqli_close($mysqli);
         echo "    </div>\n";
+
+
+
         echo "<div class='searchcontainer'>";
         echo "    <p>Search:</p>";
         echo "    <form>";
