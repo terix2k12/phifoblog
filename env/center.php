@@ -11,18 +11,17 @@
         echo $content[$contentId]["content"];
 
 
- $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
-        echo "\nCategories: ".$contentId;
+        $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+        echo "\nCategories: ";
         $stmt = $mysqli->prepare("SELECT name FROM ART_CAT ac join CATEGORY cat on cat.Id = ac.category where ac.ARTICLE = ?;");
         $stmt->bind_param("i", $contentId);
-
         $stmt->execute();
-        $stmt->bind_result($dId);
-        
+        $stmt->bind_result($dId); 
         while($row = $stmt->fetch()) {
             echo "<".$dId.">";
         }
-    mysqli_close($mysqli);
+        mysqli_close($mysqli);
+
 
     } else {
         echo "<p>Your search is futile.</p>\n";
