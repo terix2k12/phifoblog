@@ -8,7 +8,22 @@
     
     if(array_key_exists($contentId,$content)) {
         echo "\t\t<h2 class=\"pagetitle\">".htmlspecialchars($content[$contentId]["title"])."</h2>\n";
-        echo $content[$contentId]["content"] ;
+        echo $content[$contentId]["content"];
+
+
+ $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+        echo "\nCategories: ".$contentId;
+        $stmt = $mysqli->prepare("SELECT name FROM ART_CAT ac join CATEGORY cat on cat.Id = ac.category where ac.ARTICLE = ?;");
+        $stmt->bind_param("i", $contentId);
+
+        $stmt->execute();
+        $stmt->bind_result($dId);
+        
+        while($row = $stmt->fetch()) {
+            echo "<".$dId.">";
+        }
+    mysqli_close($mysqli);
+
     } else {
         echo "<p>Your search is futile.</p>\n";
     }
