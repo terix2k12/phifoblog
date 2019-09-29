@@ -63,7 +63,6 @@
         echo "      <div>";
         $mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
         $stmt = $mysqli->prepare("SELECT name FROM CATEGORY cat;");
-        $stmt->bind_param("i", $contentId);
         $stmt->execute();
         $stmt->bind_result($dId); 
         while($row = $stmt->fetch()) {
