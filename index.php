@@ -1,4 +1,16 @@
 <?php
+	/* Docker Environment Test:
+	phpinfo();
+
+	// Credentials as specified in docker-compose.yml
+    $servername = 'db'; 
+    $username = 'devuser';
+    $dbpassword = 'devpass';
+    $dbname = 'test_db';
+
+	$mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
+	*/
+
 	$contentId = intval($_GET["id"]);
 	if(empty($contentId)) {
 		$contentId = 0;
