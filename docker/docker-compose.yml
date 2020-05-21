@@ -14,6 +14,18 @@ services:
       - "9906:3306"
     networks:
       - escape_net
+
+  flyway:
+    image: flyway/flyway
+    command: migrate
+    volumes:
+      - ../dbscripts:/flyway/sql
+      - ../dbscripts:/flyway/conf
+    networks:
+      - escape_net
+    depends_on:
+      - db
+
   web:
     image: php:7.2.2-apache
     build: ./
@@ -24,8 +36,6 @@ services:
       - ./../:/var/www/html/
     ports:
       - "8100:80"
-    stdin_open: true
-    tty: true
     networks:
       - escape_net
 
