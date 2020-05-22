@@ -32,33 +32,6 @@
         mysqli_close($mysqli);
  */
 
-	// Download articles
-	if($edit==3) {
-		$mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
-	
-		if($contentId==-1){
-			$stmt = $mysqli->prepare("SELECT * FROM ARTICLES;");
-		}else{
-			$stmt = $mysqli->prepare("SELECT * FROM ARTICLES WHERE ID = ?;");
-			$stmt->bind_param("i", $contentId);
-		}		
-						
-		if (!$stmt->execute()) {
-		      echo "<h1>404 Not Found</h1>\n</body>\n</html>\n";
-	    	header("HTTP/1.0 404 Not Found");
-		}else{		 
-			 $result = $stmt->get_result();
-			 $outp = $result->fetch_all(MYSQLI_ASSOC);
-
-			header("Content-Type: application/json; charset=UTF-8");
-			echo json_encode($outp);		     
-		}
-
-		mysqli_close($mysqli);
-		
-		return;
-	}
-
 	echo "\n\t<div class=\"contentcontainer\">\n";
 	echo "\n\t<div class=\"content\">\n";
 
@@ -209,5 +182,8 @@
  			<p>Passphrase: <input type="password" name="pass"/></p>
  			<p><input type="submit" value="Update article"/></p>
 		</form>
+
+		<a href="env/export.php">Export all articles.</a>
+
 	</div>
 </div>
