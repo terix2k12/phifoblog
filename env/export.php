@@ -14,8 +14,10 @@
 
 	// TODO generic database interaction
 	// TODO generic error handling
-
+	// TODO authorization
 	// TODO categories
+	// TODO art cat
+	// TODO date
 						
 	if (!$stmt->execute()) {
 		echo "<h1>404 Not Found</h1>\n</body>\n</html>\n";
@@ -24,8 +26,10 @@
 		$result = $stmt->get_result();
 		$outp = $result->fetch_all(MYSQLI_ASSOC);
 
+		$outpq = '{"exported": "2020-05-10",'.'"articles":'.json_encode($outp).', "categories": [], "art_cat":[]}';		
+
 		header("Content-Type: application/json; charset=UTF-8");
-		echo json_encode($outp);		     
+		echo $outpq;		     
 	}
 
 	mysqli_close($mysqli);
