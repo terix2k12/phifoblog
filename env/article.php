@@ -185,5 +185,13 @@
 
 		<a href="env/export.php">Export all articles.</a>
 
+<!-- The data encoding type, enctype, MUST be specified as below -->
+<form enctype="multipart/form-data" action="env/import.php" method="POST">
+    <!-- MAX_FILE_SIZE must precede the file input field -->
+    <!--input type="hidden" name="MAX_FILE_SIZE" value="30000" /-->
+    <input name="import" type="file" /><br/>
+    <input type="submit" value="Import articles" />
+</form>
+
 	</div>
 </div>
