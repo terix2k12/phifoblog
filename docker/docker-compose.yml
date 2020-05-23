@@ -27,7 +27,7 @@ services:
       - db
 
   web:
-    image: php:7.2.2-apache
+    image: php:7.4.6-apache
     build: ./
     container_name: php_web
     depends_on:
