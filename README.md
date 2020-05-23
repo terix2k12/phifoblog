@@ -8,9 +8,24 @@ It is a small hobby project to power my blog on https://www.philippfonteyn.de
 
 There are already very powerful PHP blogs out there. I created this one because I do programming for fun and to learn a little bit about PHP, CSS and web-projects in general.
 
-## Install
+# Installation
 
 Fully automated installation not yet supported. Currently three steps are necessary:
 - copy the whole project onto your webspace
 - create a SQL database with the tables LOGINREGISTER and ARTICLES 
 - Edit the dbcredentials.php
+
+# Development
+
+git checkout
+cd docker
+docker-compose up
+
+## Database
+
+connect with a sql tool e.g. DBeaver
+to localhost/9906
+
+## Tests
+
+is usingPHPunit
