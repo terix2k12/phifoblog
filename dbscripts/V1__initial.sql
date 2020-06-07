@@ -1,37 +1,25 @@
-CREATE TABLE ARTICLES (
-    id integer NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    created DATE NOT NULL,
-    content VARCHAR(1000) NOT NULL,
-    active boolean NOT NULL
+CREATE TABLE `ARTICLES` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(500) NOT NULL,
+  `CREATED` date NOT NULL,
+  `CONTENT` varchar(20000) NOT NULL,
+  `ACTIVE` int(11) NOT NULL DEFAULT '1',
+
+  PRIMARY KEY (`ID`)
 );
 
-INSERT INTO ARTICLES
-(id, name, created, content, active)
-VALUES
-(0, 'Start', '2020-05-01', 'Hello welcome', True),
-(1, 'Not there', '2020-05-02', 'is inactive', False),
-(2, 'Content', '2020-05-02', 'With category', True);
+CREATE TABLE `CATEGORY` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NAME` varchar(500) NOT NULL,
 
-CREATE TABLE CATEGORY (
-	id integer NOT NULL,
-	name VARCHAR(100) NOT NULL
+  PRIMARY KEY (`ID`)
 );
 
-INSERT INTO CATEGORY
-(id, name)
-VALUES
-(1, "cat1"),
-(2, "cat2"),
-(3, "cat3");
-
-CREATE TABLE ART_CAT(
-	article integer NOT NULL,
-	category integer NOT NULL
+CREATE TABLE `ART_CAT` (
+  `ARTICLE` int(11) NOT NULL,
+  `CATEGORY` int(11) NOT NULL
 );
 
-INSERT INTO ART_CAT
-(article, category)
-VALUES
-(2, 1), 
-(2, 2);
+CREATE TABLE `LOGINREGISTER` (
+  `ATTEMPT` int(11) NOT NULL
+);
