@@ -9,7 +9,9 @@ class GenericDatabase {
     private $dbname;
     private $dbpassword;
 
-    public function __construct(string $path) {
+    public function __construct(
+        string $path
+    ) {
 		include($path);
 
         $this->servername = $servername; 
@@ -27,12 +29,19 @@ class GenericDatabase {
         }        
 */
 
-    public static function fromString(string $email): self {
+    public static function fromString(
+        string $email
+    ): self {
         return new self($email);
     }
 
     public function connect() {
-		$this->mysqli = new mysqli($this->servername, $this->username, $this->dbpassword, $this->dbname);
+		$this->mysqli = new mysqli(
+            $this->servername,
+            $this->username,
+            $this->dbpassword,
+            $this->dbname
+        );
 		return $this->mysqli;  	
     }
 

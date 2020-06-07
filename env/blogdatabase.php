@@ -21,7 +21,9 @@ class BlogDatabase extends GenericDatabase {
         }
     }
 
-    public function getArticle($contentId) {
+    public function getArticle(
+        $contentId
+    ) {
         $stmt = $this->mysqli->prepare("SELECT * FROM ARTICLES WHERE ID = ?;");
         $stmt->bind_param("i", $contentId);
 
@@ -33,6 +35,28 @@ class BlogDatabase extends GenericDatabase {
             $outp = $result->fetch_all(MYSQLI_ASSOC);
             return $outp;
         }
+    }
+
+    public function putArticle(
+        $id,
+        $name,
+        $created,
+        $content,
+        $active
+    ) {
+        // TODO 20000 length content check
+        // TODO 500 title
+
+        $stmt = $this->mysqli->prepare("INSERT INTO ARTICLES (id, name, created, content, active) VALUES (?, ?, ?, ?, ?);");
+        $stmt->bind_param("issss", $id, $name, $created, $content, $active);
+
+        $res = $stmt->execute();
+
+        if(!$res) {
+          echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error. "<br>\n";
+        }
+
+        return $res;
     }
 
 }

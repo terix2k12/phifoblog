@@ -32,4 +32,11 @@ final class BlogDatabaseTest extends TestCase {
         $this->assertTrue(True);
     }
 
+    public function testPutArticle(): void {
+
+        $put = $this->db->putArticle(0, "Title", "2020-05-01", "Text", True);
+
+        $this->assertTrue($put);
+    }
+
 }

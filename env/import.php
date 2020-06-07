@@ -1,5 +1,7 @@
 <?php
-	
+
+	include("../env/blogdatabase.php");
+
 	echo "Received file: ".$_FILES['import']['name']."<br>";
 	echo "Temporary file: ".$_FILES['import']['tmp_name']."<br>";
 	echo "Size: ".$_FILES['import']['size']."<br>";
@@ -9,14 +11,13 @@
 		$strJsonFile = file_get_contents($_FILES['import']['tmp_name']);
 
 		$obj = json_decode($strJsonFile, true);
-
-		include("../dbcredentials.php");
-		$mysqli = new mysqli($servername, $username, $dbpassword, $dbname);
 		
 		$articles = $obj["articles"];
 
-		foreach ($articles as $article) {
+		$db = new BlogDatabase("../dbcredentials.php");
+		$db->connect();
 
+		foreach ($articles as $article) {
 			$id = $article["id"];
 			$name = $article["name"];
 			$created = $article["created"];
@@ -30,21 +31,19 @@
 			echo " content: ".$content."<br>";
 			echo " active: ".$active."<br>";
 
-			$stmt = $mysqli->prepare("INSERT INTO ARTICLES (id, name, created, content, active) VALUES (?, ?, ?, ?, ?);");
-			$stmt->bind_param("issss", $id, $name, $created, $content, $active);
+			$put = $db->putArticle($id, $name, $created, $content, $active);
 
-			if (!$stmt->execute()) {
-				// echo "Execute failed: (" . $stmt->errno . ") " . $stmt->error;
+			if (!$put) {
 				echo "Import failure.<br>\n";
-			} 
-
+			}
 		}
 
-		mysqli_close($mysqli);
+		$db->disconnect();
 	} else {
-		echo "Nothing sent.";
+		echo "Nothing to import.";
 	}
 
+	// TODO file issaved after import
 	// TODO categories
 	// TODO art/cat connection
 	// TODO authorization
