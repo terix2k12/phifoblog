@@ -16,6 +16,7 @@ services:
       - escape_net
     volumes:
       - ./mysql_data:/var/lib/mysql
+# TODO test dbvolumes...
 
   flyway:
     image: flyway/flyway
@@ -28,9 +29,24 @@ services:
     depends_on:
       - db
 
+  react:
+    image: blog-react:alpine3.16
+    build:
+      context: ./
+      dockerfile: Dockerfile-react
+    container_name: react_build
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../react:/my-blog-app
+    networks:
+      - escape_net
+
   web:
-    image: php:7.4.6-apache
-    build: ./
+    image: blog-phpserv:7.4.6-apache
+    build:
+      context: ./
+      dockerfile: Dockerfile-php
     container_name: php_web
     depends_on:
       - db
