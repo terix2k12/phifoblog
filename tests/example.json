@@ -1,0 +1,14 @@
+{
+	"exported": "2020-05-19",
+	"articles": [
+		{
+			"id": 5,
+			"active": 1,
+			"name": "importtestA",
+			"created": "2020-06-06",
+			"content": "Some text"
+		}
+	],
+	"categories": [1, 2, 3],
+	"art_cat": [1, 2]
+}
