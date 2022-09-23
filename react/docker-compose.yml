@@ -1,0 +1,39 @@
+# ./docker-compose-init.yml
+
+version: '3'
+
+services:
+
+# Should be executed only once, to create the app skeleton.
+  react-init:
+    container_name: react_init
+    build:
+      context: ./
+      dockerfile: Dockerfile-react-init
+    volumes:
+      - ./sources:/blog-app
+
+# Builds the image containing dev server.
+# Note: Rebuild, if 'package.json' changes!
+  react-build-dev:
+    image: blog-react:0.0.1
+    container_name: react_build_dev
+    build:
+      context: ./
+      dockerfile: Dockerfile-react-dev
+
+# Launches the dev server with the current state of the app
+  react-dev:
+    image: blog-react:0.0.1
+    container_name: react_dev_server
+    environment:
+    - WATCHPACK_POLLING=true
+    - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../react/sources/src:/blog-app/src
+      - ../react/sources/public:/blog-app/public
+
+# TODO 
+# react-pack ? test ? lint ?

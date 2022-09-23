@@ -1,0 +1,5 @@
+FROM node:current-alpine3.16
+RUN npx create-react-app init-blog-app
+RUN rm -r init-blog-app/node_modules
+WORKDIR init-blog-app
+ENTRYPOINT cp -r . /blog-app

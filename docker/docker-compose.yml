@@ -29,19 +29,6 @@ services:
     depends_on:
       - db
 
-  react:
-    image: blog-react:alpine3.16
-    build:
-      context: ./
-      dockerfile: Dockerfile-react
-    container_name: react_build
-    ports:
-      - "3000:3000"
-    volumes:
-      - ../react:/my-blog-app
-    networks:
-      - escape_net
-
   web:
     image: blog-phpserv:7.4.6-apache
     build:
