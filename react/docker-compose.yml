@@ -36,4 +36,7 @@ services:
       - ../react/sources/public:/blog-app/public
 
 # TODO 
-# react-pack ? test ? lint ?
+# - react-build/pack 
+# - test
+# - lint
+# - dont execute react-init and others... when doing only `up`
