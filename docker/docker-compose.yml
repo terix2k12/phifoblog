@@ -3,46 +3,39 @@
 version: '3'
 
 services:
-  db:
+  blog-db:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: my_secret_pw_shh
       MYSQL_DATABASE: test_db
       MYSQL_USER: devuser
       MYSQL_PASSWORD: devpass
+    command: --explicit_defaults_for_timestamp=true
     ports:
       - "9906:3306"
-    networks:
-      - escape_net
     volumes:
-      - ./mysql_data:/var/lib/mysql
-# TODO test dbvolumes...
+      - blog_sqlData:/var/lib/mysql
 
-  flyway:
+  blog-flyway:
     image: flyway/flyway
     command: migrate
     volumes:
       - ../dbscripts:/flyway/sql
       - ../dbscripts:/flyway/conf
-    networks:
-      - escape_net
     depends_on:
-      - db
+      - blog-db
 
-  web:
+  blog-web:
     image: blog-phpserv:7.4.6-apache
     build:
       context: ./
       dockerfile: Dockerfile-php
-    container_name: php_web
     depends_on:
-      - db
+      - blog-db
     volumes:
-      - ./../:/var/www/html/
+      - ./../env:/var/www/html/
     ports:
       - "8100:80"
-    networks:
-      - escape_net
 
-networks:
-  escape_net:
+volumes:
+  blog_sqlData:
