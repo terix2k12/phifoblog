@@ -1,6 +1,6 @@
 <?php
 	/* Keep this file secret :-) */
-	$servername = "localhost";
+	$servername = "";
 	$username = "";
 	$password = "";
 	$dbname = "";
