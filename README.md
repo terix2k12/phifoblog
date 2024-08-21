@@ -29,3 +29,20 @@ to localhost/9906
 ## Tests
 
 is usingPHPunit
+
+
+
+
+
+# TODO
+test dbvolumes...
+ i don't want to use a docker volume. I want to use a mount bind.
+ https://docs.docker.com/storage/volumes/#use-a-volume-driver
+
+content
+// TODO select only specific content based on filters (date, categories, range etc.)
+
+
+ ## migrating....
+ - welche funktionen sind da?
+    [ ] alle funktionen gechecked
