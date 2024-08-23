@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+A simple API playground based on pure Javascript:
+
+<script>
+
+api = 'http://localhost:8200/'
+path = (window.location + "").split('/')[3];
+id = (window.location + "").split('/')[4];
+
+console.log("Called from: " + path);
+console.log("id: " + id);
+
+url = api+path
+
+fetch(api)
+.then(function (response) {
+	// The API call was successful!
+	return response.json();
+})
+.then(function (data) {
+	// This is the JSON from our response
+
+	if(path.includes('articles')) {
+		console.log("Articles: " + data);
+		const para = document.createElement("p");
+		data.forEach(
+			(d,i) => {
+			const anchorNode = document.createElement("a");
+			para.appendChild(anchorNode);
+			anchorNode.innerHTML = d.name + "</br>";
+			anchorNode.href = "/article/"+d.id;
+			}
+		);
+		document.body.appendChild(para)
+	} if(path.includes('article')) {
+		data.forEach((d,i) => {
+			if(d.id==id) {
+			const node = document.createElement("p");
+			node.innerHTML = d.text;
+			document.body.appendChild(node);
+			}
+		});
+	} else {
+		const para = document.createElement("p");
+		para.innerHTML = data
+		document.body.appendChild(para);
+	}
+});
+
+</script>
+
+<li><a href="/articles">Articles</a>
+<li><a href="/tags">Tags</a>
+<li><a href="/login">Login</a>
+
+</html>

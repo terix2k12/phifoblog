@@ -37,5 +37,29 @@ services:
     ports:
       - "8100:80"
 
+  blog-api:
+    image: blog-phpserv:7.4.6-apache
+    build:
+      context: ./
+      dockerfile: Dockerfile-php
+    depends_on:
+      - blog-db
+    volumes:
+      - ./../api:/var/www/html/
+    ports:
+      - "8200:80"
+
+  blog-js:
+    image: blog-phpserv:7.4.6-apache
+    build:
+      context: ./
+      dockerfile: Dockerfile-php
+    depends_on:
+      - blog-db
+    volumes:
+      - ./../playground:/var/www/html/
+    ports:
+      - "8300:80"
+
 volumes:
   blog_sqlData:
