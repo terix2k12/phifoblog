@@ -45,7 +45,8 @@ services:
     depends_on:
       - blog-db
     volumes:
-      - ./../api:/var/www/html/
+      - ./../api/src:/var/www/html/
+      - ./../api/test:/phptest/test
     ports:
       - "8200:80"
 
@@ -55,7 +56,7 @@ services:
       context: ./
       dockerfile: Dockerfile-php
     depends_on:
-      - blog-db
+      - blog-api
     volumes:
       - ./../playground:/var/www/html/
     ports:

@@ -1,3 +1,7 @@
 FROM php:7.4.6-apache
 RUN docker-php-ext-install pdo pdo_mysql mysqli
+RUN mkdir /phptest
+RUN curl -L --output /phptest/phpunit https://phar.phpunit.de/phpunit-9.phar
+RUN chmod +x /phptest/phpunit
+WORKDIR /var/www/html/
 EXPOSE 80

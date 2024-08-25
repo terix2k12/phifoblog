@@ -29,10 +29,11 @@ to localhost/9906
 ## Tests
 
 is usingPHPunit
+./phpunit --bootstrap src/autoload.php tests
 
-
-
-
+./phpunit --version
+./phpunit tests
+ sudo docker exec docker_blog-api_1 /phptest/phpunit /phptest/test
 
 # TODO
 test dbvolumes...
@@ -42,6 +43,7 @@ test dbvolumes...
 content
 // TODO select only specific content based on filters (date, categories, range etc.)
 
+swagger api
 
  ## migrating....
  - welche funktionen sind da?
